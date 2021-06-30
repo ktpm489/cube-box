@@ -34,7 +34,8 @@ function img_box(self) {
     img_img_box.onload = function() {
         himg_img_box = img_img_box.height
         wimg_img_box = img_img_box.width
-        idpopup_img_box.innerHTML = '<img src=' + namepic_img_box + '>'
+        // idpopup_img_box.innerHTML = '<img src=' + namepic_img_box + '>'
+        idpopup_img_box.innerHTML = '<div class="center-item">' +'<img src=' + namepic_img_box + '>' + '</div>'
 
         if (wimg_img_box > wwin_img_box) {
             idpopup_img_box.getElementsByTagName('img')[0].style.width = '90%'
