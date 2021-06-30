@@ -36,12 +36,14 @@ function img_box(self) {
         wimg_img_box = img_img_box.width
         // idpopup_img_box.innerHTML = '<img src=' + namepic_img_box + '>'
         idpopup_img_box.innerHTML = '<div class="center-item">' +'<img src=' + namepic_img_box + '>' + '</div>'
-
+        
         if (wimg_img_box > wwin_img_box) {
             idpopup_img_box.getElementsByTagName('img')[0].style.width = '90%'
+            idpopup_img_box.getElementsByTagName('img')[0].style.maxWidth = '800px'
         }
         else if (himg_img_box > hwin_img_box) {
             idpopup_img_box.getElementsByTagName('img')[0].style.height = '90%'
+            idpopup_img_box.getElementsByTagName('img')[0].style.maxWidth = '800px'
             himg_img_box = hwin_img_box * 90 / 100
         }
 
