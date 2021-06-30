@@ -24,8 +24,8 @@ class App extends Component {
      let transformProps = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' ')
      let transformProp = this.support(transformProps, el)
      console.log('transformProp', transformProp)
-     let ratio = window.innerWidth / 100 
-     let ratioCompare = ratio > 0.5 ? 0.5 : ratio 
+     let ratio = window.innerWidth / 1000 
+     let ratioCompare = ratio > 0.55 ? 0.5 : ratio 
      el.style[transformProp] = `scale(${ratioCompare},${ratioCompare})`
 }
 
