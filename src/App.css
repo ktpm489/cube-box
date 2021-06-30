@@ -52,6 +52,7 @@ h2 {
   perspective: 800px;
   perspective-origin: 50% 200px;
   transform: scale(0.75, 0.75);
+  /* margin: 100px; */
 }
 
 .cube {

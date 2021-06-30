@@ -1,7 +1,44 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component} from 'react'
+import 'prevent-pull-refresh';
+import ReactDOM from "react-dom";
+class App extends Component {
 
-function App() {
+  componentDidMount() {
+   
+    this.updateSize()
+    window.addEventListener('resize', this.updateSize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize',this.updateSize)
+  }
+
+
+
+   updateSize = () =>  {
+  // setSize([window.innerWidth, window.innerHeight]);
+     let el = document.getElementsByClassName("viewport")[0]
+     console.log('el', el)
+     let transformProps = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' ')
+     let transformProp = this.support(transformProps, el)
+     console.log('transformProp', transformProp)
+     let ratio = window.innerWidth / 100 
+     let ratioCompare = ratio > 0.5 ? 0.5 : ratio 
+     el.style[transformProp] = `scale(${ratioCompare},${ratioCompare})`
+}
+
+  
+  support =(props, el) =>{
+  for (var i = 0, l = props.length; i < l; i++) {
+    if (typeof el?.style[props[i]] !== "undefined") {
+      return props[i];
+    }
+  }
+}
+
+  render () {
   return (
     <div className="App">
       <div className="wrapper">
@@ -41,6 +78,7 @@ function App() {
       </div>
     </div>
   );
+  }
 }
 
 export default App;
