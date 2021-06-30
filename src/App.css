@@ -164,3 +164,28 @@ object {
 object:hover {
   opacity: 1;
 }
+
+
+.face {
+  background-size: cover !important;
+  background: url("https://ipfs.pantograph.app/ipfs/QmZwnC4SB2gJ2MhULFDaL4Awkd9FRcSGUbesQ9mgaTWxih?filename=Vien.png") no-repeat;
+  background-position: center center !important;
+  /* filter: drop-shadow(0 0 10px #00ffec); */
+}
+
+.face:hover {
+  box-shadow: 0 0 10px #00ffec, 0 0 40px #00ffec
+}
+
+.cell {
+  flex: 1;
+  /* don't grow, don't shrink, width */
+  height: 90%;
+  width: 90%;
+  align-self: center;
+  /* background-color: #999; */
+  border: 0px;
+  position: relative;
+  cursor: pointer;
+
+}
