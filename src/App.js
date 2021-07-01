@@ -44,23 +44,41 @@ class App extends Component {
 // function add Video
  addVideo = ( linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4?autoplay=1', currentDiv) => {
   var div = document.createElement('div');
-  div.style.className = 'cell';
-  var iframe = document.createElement('video');
-  iframe.style.width = '96%';
-  iframe.style.height = '96%';
-  iframe.style.marginTop = '2%';
-  iframe.style.border = '0px';
-  iframe.style.alignSelf = 'center';
-  iframe.style.alignItems = 'center';
-  iframe.style.alignContent = 'center';
-  iframe.autoplay = true
-  iframe.controls = true
-  iframe.muted = true
-  iframe.loop = true
-  iframe.playsInline = true
-  iframe.style.objectFit = 'contain'
-  iframe.src = linkVideo;
-  div.appendChild(iframe);
+  div.className = 'cell';
+   div.innerHTML =`<video
+    id="my-player"
+    class="video-js"
+    controls
+    muted
+    loop
+    preload="auto" width="360" height="360" autoplay
+    poster="//vjs.zencdn.net/v/oceans.png"
+    data-setup='{}'>
+  <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a
+    web browser that
+    <a href="https://videojs.com/html5-video-support/" target="_blank">
+      supports HTML5 video
+    </a>
+  </p>
+</video>`
+  // var iframe = document.createElement('video');
+  // iframe.style.width = '96%';
+  // iframe.style.height = '96%';
+  // iframe.style.marginTop = '2%';
+  // iframe.style.border = '0px';
+  // iframe.style.alignSelf = 'center';
+  // iframe.style.alignItems = 'center';
+  // iframe.style.alignContent = 'center';
+  // iframe.autoplay = true
+  // iframe.controls = true
+  // iframe.muted = true
+  // iframe.loop = true
+  // iframe.playsInline = true
+  // iframe.style.objectFit = 'contain'
+  // iframe.src = linkVideo;
+  // div.appendChild(iframe);
   currentDiv.appendChild(div);
 }
 
