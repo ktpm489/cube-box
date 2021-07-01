@@ -49,6 +49,7 @@ class App extends Component {
     id="my-player"
     class="video-js"
     controls
+    playsinline
     muted
     loop
     preload="auto" width="360" height="360" autoplay
