@@ -27,10 +27,20 @@ class App extends Component {
     this.addImage("https://ipfs.pantograph.app/ipfs/QmYQqGQJfi6XeHAqERBSp1nnXKnVuhiwfyk2wdcmLgHaPV?filename=4.png", face3);
     this.addImage("https://ipfs.pantograph.app/ipfs/QmdG5sAXiqUBzrEnzZCfreeiAkQQewfepCu61BmGzhFHGM?filename=5.png", face4);
     this.addImage("https://ipfs.pantograph.app/ipfs/Qmd12aesUGsML1uX7TXNC5kap7mBnMtHtdwcEcv72VH7Yu?filename=6.png", face5);
-    this.addVideo("https://ipfs.pantograph.app/ipfs/QmWSW4NjdRBtL6akshiJhPYBr8tnxw76Q9mSMseFWtSDWz?filename=mat-1.mp4", face6);
+    if (this.checkSafari()) {
+      this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmWSW4NjdRBtL6akshiJhPYBr8tnxw76Q9mSMseFWtSDWz?filename=mat-1.mp4", face6);
+    } else {
+      this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmWSW4NjdRBtL6akshiJhPYBr8tnxw76Q9mSMseFWtSDWz?filename=mat-1.mp4", face6);
+    }
+    
   }
 
 
+  checkSafari = () => {
+    return navigator.vendor.match(/apple/i) &&
+      !navigator.userAgent.match(/crios/i) &&
+      !navigator.userAgent.match(/fxios/i);
+  }
 
 
   // function add Image
@@ -42,7 +52,7 @@ class App extends Component {
 }
 
 // function add Video
- addVideo = ( linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4?autoplay=1', currentDiv) => {
+ addVideoSafari = ( linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4?autoplay=1', currentDiv) => {
   var div = document.createElement('div');
   div.className = 'cell';
    div.innerHTML =`<video
@@ -55,7 +65,7 @@ class App extends Component {
     preload="auto" width="360" height="360" autoplay
     poster="//vjs.zencdn.net/v/oceans.png"
     data-setup='{}'>
-  <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+  <source src="${linkVideo}" type="video/mp4"></source>
   <p class="vjs-no-js">
     To view this video please enable JavaScript, and consider upgrading to a
     web browser that
@@ -64,24 +74,33 @@ class App extends Component {
     </a>
   </p>
 </video>`
-  // var iframe = document.createElement('video');
-  // iframe.style.width = '96%';
-  // iframe.style.height = '96%';
-  // iframe.style.marginTop = '2%';
-  // iframe.style.border = '0px';
-  // iframe.style.alignSelf = 'center';
-  // iframe.style.alignItems = 'center';
-  // iframe.style.alignContent = 'center';
-  // iframe.autoplay = true
-  // iframe.controls = true
-  // iframe.muted = true
-  // iframe.loop = true
-  // iframe.playsInline = true
-  // iframe.style.objectFit = 'contain'
-  // iframe.src = linkVideo;
-  // div.appendChild(iframe);
   currentDiv.appendChild(div);
 }
+
+  // function add Video
+  addVideoChorme = (linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4?autoplay=1', currentDiv) => {
+    var div = document.createElement('div');
+    div.style.className = 'cell';
+    var iframe = document.createElement('video');
+    iframe.style.width = '96%';
+    iframe.style.height = '96%';
+    iframe.style.marginTop = '2%';
+    iframe.style.border = '0px';
+    iframe.style.alignSelf = 'center';
+    iframe.style.alignItems = 'center';
+    iframe.style.alignContent = 'center';
+    iframe.autoplay = true
+    iframe.controls = true
+    iframe.muted = true
+    iframe.loop = true
+    iframe.playsInline = true
+    iframe.style.objectFit = 'contain'
+    iframe.src = linkVideo;
+    div.appendChild(iframe);
+    currentDiv.appendChild(div);
+  }
+
+
 
 
    updateSize = () =>  {
