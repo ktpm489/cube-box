@@ -3,9 +3,14 @@ var allow_hide_scroll_img_box = 'yes'
 var use_fade_inout_img_box = 'yes'
 var speed_img_box = 0.08
 var z_index_dv_img_box = 999
-var vopa_img_box, idpopup_img_box
+var vopa_img_box, idpopup_img_box = null
 
 window.onload = function() {
+    createElementImageBox()
+}
+
+
+function createElementImageBox () {
     var crtdv_img_box = document.createElement('div')
     crtdv_img_box.id = 'img_box'
     document.getElementsByTagName('body')[0].appendChild(crtdv_img_box)
@@ -25,6 +30,10 @@ window.onload = function() {
 
 function img_box(self) {
     var namepic_img_box = typeof self === 'string' ? self : self.src
+    // create idpopup_img_box
+    if (idpopup_img_box == null || idpopup_img_box == undefined) {
+        createElementImageBox()
+    }
     vopa_img_box = 0
     var hwin_img_box = window.innerHeight
     var wwin_img_box = window.innerWidth
