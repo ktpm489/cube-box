@@ -1,5 +1,48 @@
 $(function () {
 
+    $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {
+        const face1 = document.getElementById('face1')
+        const face2 = document.getElementById('face2')
+        const face3 = document.getElementById('face3')
+        const face4 = document.getElementById('face4')
+        const face5 = document.getElementById('face5')
+        const face6 = document.getElementById('face6')
+        let isSafari = navigator.vendor.match(/apple/i) &&
+            !navigator.userAgent.match(/crios/i) &&
+            !navigator.userAgent.match(/fxios/i);
+        // console.log('isSafari', isSafari)
+        if (isSafari) {
+            if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
+                //  console.log('full screen ')
+                showHideAttribute(face1, false)
+                showHideAttribute(face2, false)
+                showHideAttribute(face3, false)
+                showHideAttribute(face4, false)
+                showHideAttribute(face5, false)
+                showHideAttribute(face6, false)
+
+            } else {
+                // console.log('end fuall screen');
+                showHideAttribute(face1, true)
+                showHideAttribute(face2, true)
+                showHideAttribute(face3, true)
+                showHideAttribute(face4, true)
+                showHideAttribute(face5, true)
+                showHideAttribute(face6, true)
+            }
+        }
+
+        
+    })
+
+    function showHideAttribute (divElement, show = true) {
+        if (divElement !== null) {
+            divElement.style.opacity = show ? 1 : 0
+        }
+       
+    }
+
+
     var el = document.createElement('div'),
         transformProps = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' '),
         transformProp = support(transformProps),
