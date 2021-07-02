@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import { Component} from 'react'
 import 'prevent-pull-refresh';
 import ReactDOM from "react-dom";
@@ -126,9 +126,17 @@ class App extends Component {
   render () {
   return (
     <div className="App">
-      <div className="wrapper">
-        <p className="learn">
-        </p>
+    <div class="scene">
+       <div class="lamp">
+          <div class="lamp_side"></div>
+          <div class="lamp_side"></div>
+          <div class="lamp_side"></div>
+          <div class="lamp_side"></div>
+          <div class="lamp_side"></div>
+          <div class="lamp_side"></div>
+          <div class="lamp_side"></div>
+          <div class="lamp_side"></div>
+        </div> 
         <article className="viewport">
           <section className="cube">
             <div className="face" id='face1'></div>
@@ -139,8 +147,10 @@ class App extends Component {
             <div className="face" id='face6'></div>
           </section>
         </article>
-
+         <div class="floor"></div> 
       </div>
+     
+
     </div>
   );
   }
