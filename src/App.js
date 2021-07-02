@@ -145,6 +145,8 @@ class App extends Component {
             <div className="face" id='face4'></div>
             <div className="face" id='face5'></div>
             <div className="face" id='face6'></div>
+            <span>
+            </span>
           </section>
         </article>
          <div class="floor"></div> 

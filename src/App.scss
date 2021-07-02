@@ -326,3 +326,29 @@ object:hover {
   min-width: 100%;
   position: relative;
 }
+
+span {
+  display: block;
+  height: 100px;
+  position: relative;
+  transform: scale(0.9);
+  width: 100px;
+
+  &:before,
+  &:after {
+    content: "";
+    border-radius: 2px;
+    display: block;
+    width: 85%;
+    height: 25%;
+    position: absolute;
+    top: 180%;
+    left: 180%;
+    transition: 0.3s;
+    background: red;
+  }
+
+  &:after {
+    transform: rotate(90deg);
+  }
+}
