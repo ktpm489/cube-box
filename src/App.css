@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-color: #000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 75px;
+  perspective: 15em;
 }
 
 .App-logo {
@@ -87,11 +94,9 @@ h2 {
   height: 360px;
   width: 360px;
   padding: 20px;
-  background-color: rgba(50, 50, 50, 0.85);
   font-size: 1em;
   line-height: 1em;
   color: #fff;
-  border: 1px solid #555;
   border-radius: 3px;
 }
 
@@ -102,6 +107,7 @@ h2 {
   -webkit-transition: -webkit-transform 1s ease-in;
   -moz-transition: -moz-transform 1s ease-in;
   -transition: transform 1s ease-in;
+  display: block;
 }
 
 .cube>div:nth-child(2) {
@@ -111,6 +117,7 @@ h2 {
   -webkit-transition: -webkit-transform 1s ease-in;
   -moz-transition: -moz-transform 1s ease-in;
   -transition: transform 1s ease-in;
+  display: block;
 }
 
 .cube>div:nth-child(3) {
@@ -121,6 +128,7 @@ h2 {
   -moz-transition: -moz-transform 1s ease-in;
   -transition: transform 1s ease-in;
   text-align: center;
+  display: block;
 }
 
 .cube>div:nth-child(4) {
@@ -130,6 +138,7 @@ h2 {
   -transition: transform 1s ease-in;
   -moz-transform: rotateY(180deg) translateZ(200px);
   transform: rotateY(180deg) translateZ(200px);
+  display: block;
 }
 
 .cube>div:nth-child(5) {
@@ -139,6 +148,7 @@ h2 {
   -transition: transform 1s ease-in;
   -moz-transform: rotateY(-90deg) translateZ(200px);
   transform: rotateY(-90deg) translateZ(200px);
+  display: block;
 }
 
 .cube>div:nth-child(5) p {
@@ -155,6 +165,7 @@ h2 {
   -webkit-transition: -webkit-transform 1s ease-in;
   -moz-transition: -moz-transform 1s ease-in;
   -transition: transform 1s ease-in;
+  display: block;
 }
 
 object {
@@ -174,8 +185,9 @@ object:hover {
 }
 
 .face:hover {
-  box-shadow: 0 0 10px #00ffec, 0 0 40px #00ffec
+  box-shadow: 0 0 10px #00ffec, 0 0 40px #00ffec;
 }
+
 
 .cell {
   flex: 1;
@@ -189,12 +201,72 @@ object:hover {
   cursor: pointer;
 
 }
+
 .center-item {
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   flex: 1;
-  min-height:100%;
+  min-height: 100%;
   min-width: 100%;
   position: relative;
+}
+
+
+/* Animation in Deskop Screen*/
+@media only screen and (min-width : 1025px) {
+  #face1:hover {
+    z-index: 9999;
+    -webkit-transform: rotateX(90deg) translateZ(210px) scale(1.5);
+    -moz-transform: rotateX(90deg) translateZ(210px) scale(1.5);
+    transform: rotateX(90deg) translateZ(210px) scale(1.5);
+    background-color: transparent;
+    filter: drop-shadow(0 0 4px #00ffec);
+  }
+
+  #face2:hover {
+    z-index: 9999;
+    transform: translateZ(210px) scale(1.5);
+    -webkit-transform: translateZ(210px) scale(1.5);
+    -moz-transform: translateZ(210px) scale(1.5);
+    background-color: transparent;
+    filter: drop-shadow(0 0 4px #00ffec);
+  }
+
+  #face3:hover {
+    z-index: 9999;
+    transform: rotateY(90deg) translateZ(210px) scale(1.5);
+    -webkit-transform: rotateY(90deg) translateZ(210px) scale(1.5);
+    -moz-transform: rotateY(90deg) translateZ(210px) scale(1.5);
+    background-color: transparent;
+    filter: drop-shadow(0 0 4px #00ffec);
+  }
+
+  #face4:hover {
+    z-index: 9999;
+    -webkit-transform: rotateY(180deg) translateZ(210px) scale(1.5);
+    -moz-transform: rotateY(180deg) translateZ(210px) scale(1.5);
+    transform: rotateY(180deg) translateZ(210px) scale(1.5);
+    background-color: transparent;
+    filter: drop-shadow(0 0 4px #00ffec);
+  }
+
+  #face5:hover {
+    z-index: 9999;
+    -webkit-transform: rotateY(-90deg) translateZ(210px) scale(1.5);
+    -moz-transform: rotateY(-90deg) translateZ(210px) scale(1.5);
+    transform: rotateY(-90deg) translateZ(210px) scale(1.5);
+    background-color: transparent;
+    filter: drop-shadow(0 0 4px #00ffec);
+  }
+
+
+  #face6:hover {
+    z-index: 9999;
+    -webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale(1.5);
+    -moz-transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale(1.5);
+    transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale(1.5);
+    background-color: transparent;
+    filter: drop-shadow(0 0 4px #00ffec);
+  }
 }
