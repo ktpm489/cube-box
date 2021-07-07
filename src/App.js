@@ -46,10 +46,10 @@ class App extends Component {
   // function add Image
  addImage = (linkImg, currentDiv , linkGif = '') => {
   var div = document.createElement('div');
-  div.style.className = 'cell';
   div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
    if (linkGif !== '') {
-     div.onmouseenter = function () {
+     div.onmouseenter = function (e) {
+       e.preventDefault();
        console.log('onmouseenter')
        div.getElementsByTagName('img')[0].src = linkGif
       //  div.innerHTML = `<img src="${linkGif} "width="100%" height="100%" alt="Test Image" title="Test Image"/>`
@@ -58,10 +58,28 @@ class App extends Component {
       //  },100)
        
      };
-     div.onmouseleave = function () {
+     div.ontouchstart = function (e) {
+       e.preventDefault();
+       console.log('touchstart')
+       div.getElementsByTagName('img')[0].src = linkGif
+       //  div.innerHTML = `<img src="${linkGif} "width="100%" height="100%" alt="Test Image" title="Test Image"/>`
+       //  setTimeout(()=> {
+       //    div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
+       //  },100)
+
+     };
+
+     div.onmouseleave = function (e) {
+       e.preventDefault();
        console.log('onmouseleave')
        div.getElementsByTagName('img')[0].src = linkImg
       //  div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
+     };
+     div.ontouchend= function (e) {
+       e.preventDefault();
+       console.log('ontouchend')
+       div.getElementsByTagName('img')[0].src = linkImg
+       //  div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
      };
    }
    currentDiv.appendChild(div);
@@ -102,7 +120,7 @@ class App extends Component {
   // function add Video
   addVideoChorme = (linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4?autoplay=1', currentDiv) => {
     var div = document.createElement('div');
-    div.style.className = 'cell';
+    div.className = 'cell';
     var iframe = document.createElement('video');
     iframe.style.width = '96%';
     iframe.style.height = '96%';
@@ -153,8 +171,8 @@ class App extends Component {
         {/* <video autoPlay muted loop id="myVideo">
           <source src="https://ipfs.pantograph.app/ipfs/QmPYJ525yBEBVQ7ACpY3A9A2HQhYLbQQnDukfFoeMv9vyX?filename=Comp 1.mp4" type="video/mp4" />
         </video> */}
-        <img src="https://ipfs.pantograph.app/ipfs/QmNSG5fFLP1dpfuSFaY8EDWSqSZW6JYAmEEvKrSKQNoR6y?filename=Background_basketball.gif" id="myVideo" alt=""> */}
-         </img>
+        {/* <img src="https://ipfs.pantograph.app/ipfs/QmNSG5fFLP1dpfuSFaY8EDWSqSZW6JYAmEEvKrSKQNoR6y?filename=Background_basketball.gif" id="myVideo" alt=""> 
+         </img> */}
         <p className="learn">
         </p>
         <article className="viewport">
