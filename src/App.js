@@ -120,7 +120,6 @@ class App extends Component {
   // function add Video
   addVideoChorme = (linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4?autoplay=1', currentDiv) => {
     var div = document.createElement('div');
-    div.className = 'cell';
     var iframe = document.createElement('video');
     iframe.style.width = '96%';
     iframe.style.height = '96%';
@@ -168,9 +167,11 @@ class App extends Component {
     <div className="App">
      
       <div className="wrapper">
+      {/***Safari not working in moble*/}
         {/* <video autoPlay muted loop id="myVideo">
           <source src="https://ipfs.pantograph.app/ipfs/QmPYJ525yBEBVQ7ACpY3A9A2HQhYLbQQnDukfFoeMv9vyX?filename=Comp 1.mp4" type="video/mp4" />
         </video> */}
+        {/***Verylagging in chorme in moble*/}
         {/* <img src="https://ipfs.pantograph.app/ipfs/QmNSG5fFLP1dpfuSFaY8EDWSqSZW6JYAmEEvKrSKQNoR6y?filename=Background_basketball.gif" id="myVideo" alt=""> 
          </img> */}
         <p className="learn">
