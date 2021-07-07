@@ -38,7 +38,7 @@ function img_box(self) {
         vopa_img_box = 0
         var hwin_img_box = window.innerHeight
         var wwin_img_box = window.innerWidth
-        var himg_img_box, padtop_img_box, idfadein_img_box
+        var himg_img_box, padtop_img_box, idfadein_img_box, wimg_img_box
         var img_img_box = new Image()
         img_img_box.src = namepic_img_box
         img_img_box.onload = function () {
