@@ -46,41 +46,34 @@ class App extends Component {
   // function add Image
  addImage = (linkImg, currentDiv , linkGif = '') => {
   var div = document.createElement('div');
-  div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
+  
    if (linkGif !== '') {
+     //remove on click event in gif image
+     div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image" />`
      div.onmouseenter = function (e) {
        e.preventDefault();
        console.log('onmouseenter')
        div.getElementsByTagName('img')[0].src = linkGif
-      //  div.innerHTML = `<img src="${linkGif} "width="100%" height="100%" alt="Test Image" title="Test Image"/>`
-      //  setTimeout(()=> {
-      //    div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
-      //  },100)
        
      };
      div.ontouchstart = function (e) {
        e.preventDefault();
        console.log('touchstart')
        div.getElementsByTagName('img')[0].src = linkGif
-       //  div.innerHTML = `<img src="${linkGif} "width="100%" height="100%" alt="Test Image" title="Test Image"/>`
-       //  setTimeout(()=> {
-       //    div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
-       //  },100)
-
      };
 
      div.onmouseleave = function (e) {
        e.preventDefault();
        console.log('onmouseleave')
        div.getElementsByTagName('img')[0].src = linkImg
-      //  div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
      };
      div.ontouchend= function (e) {
        e.preventDefault();
        console.log('ontouchend')
        div.getElementsByTagName('img')[0].src = linkImg
-       //  div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
      };
+   } else {
+     div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
    }
    currentDiv.appendChild(div);
   
