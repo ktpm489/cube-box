@@ -22,9 +22,9 @@ class App extends Component {
     const face4 = document.getElementById('face4')
     const face5 = document.getElementById('face5')
     const face6 = document.getElementById('face6')
-    this.addImage("https://ipfs.pantograph.app/ipfs/Qme8CY739GbguDEnAepgAgigddnaLLW8TH7wcoxc67vgXh?filename=2.png", face1);
+    this.addImage("https://ipfs.pantograph.app/ipfs/Qme8CY739GbguDEnAepgAgigddnaLLW8TH7wcoxc67vgXh?filename=2.png", face1, 'https://ipfs.pantograph.app/ipfs/Qma9cLWvfz87YrhxqRr4CjYSWiRPrLm8x7oCG6EW1p5Us6?filename=mat2.gif');
     this.addImage("https://ipfs.pantograph.app/ipfs/QmZQ2Tfo42v7aByynm4CGFsR2SK8sK9scHBWYbY4MMV5ea?filename=3.png", face2);
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmYQqGQJfi6XeHAqERBSp1nnXKnVuhiwfyk2wdcmLgHaPV?filename=4.png", face3);
+    this.addImage("https://ipfs.pantograph.app/ipfs/QmYQqGQJfi6XeHAqERBSp1nnXKnVuhiwfyk2wdcmLgHaPV?filename=4.png", face3, 'https://ipfs.pantograph.app/ipfs/QmdJ6yggzxZt1GMuc2pehkYn2xgpsPpksYZ1cfxp11anww?filename=mat4.gif');
     this.addImage("https://ipfs.pantograph.app/ipfs/QmdG5sAXiqUBzrEnzZCfreeiAkQQewfepCu61BmGzhFHGM?filename=5.png", face4);
     this.addImage("https://ipfs.pantograph.app/ipfs/Qmd12aesUGsML1uX7TXNC5kap7mBnMtHtdwcEcv72VH7Yu?filename=6.png", face5);
     if (this.checkSafari()) {
@@ -44,11 +44,33 @@ class App extends Component {
 
 
   // function add Image
- addImage = (linkImg = 'https://ipfs.pantograph.app/ipfs/QmTLye8Gaga5WvAgd2dSHn2tfZexX4KxePxBNs14kG6cgb?filename=Screen Shot 2020-08-11 at 4.44.20 PM.png', currentDiv) => {
+ addImage = (linkImg, currentDiv , linkGif = '') => {
   var div = document.createElement('div');
   div.style.className = 'cell';
   div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
-  currentDiv.appendChild(div);
+   if (linkGif !== '') {
+     div.onmouseenter = function () {
+       console.log('onmouseenter')
+       div.getElementsByTagName('img')[0].src = linkGif
+      //  div.innerHTML = `<img src="${linkGif} "width="100%" height="100%" alt="Test Image" title="Test Image"/>`
+      //  setTimeout(()=> {
+      //    div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
+      //  },100)
+       
+     };
+     div.onmouseleave = function () {
+       console.log('onmouseleave')
+       div.getElementsByTagName('img')[0].src = linkImg
+      //  div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
+     };
+   }
+   currentDiv.appendChild(div);
+  
+ 
+}
+
+  hoverEvent = (div) => ()=> {
+    console.log('div',div)
 }
 
 // function add Video
@@ -126,7 +148,13 @@ class App extends Component {
   render () {
   return (
     <div className="App">
+     
       <div className="wrapper">
+        {/* <video autoPlay muted loop id="myVideo">
+          <source src="https://ipfs.pantograph.app/ipfs/QmPYJ525yBEBVQ7ACpY3A9A2HQhYLbQQnDukfFoeMv9vyX?filename=Comp 1.mp4" type="video/mp4" />
+        </video> */}
+        <img src="https://ipfs.pantograph.app/ipfs/QmNSG5fFLP1dpfuSFaY8EDWSqSZW6JYAmEEvKrSKQNoR6y?filename=Background_basketball.gif" id="myVideo" alt=""> */}
+         </img>
         <p className="learn">
         </p>
         <article className="viewport">
