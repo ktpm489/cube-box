@@ -161,7 +161,7 @@ class App extends Component {
 
   render () {
   return (
-    <div className="App" oncontextmenu="return false;">
+    <div className="App">
      
       <div className="wrapper">
       {/***Safari not working in moble*/}

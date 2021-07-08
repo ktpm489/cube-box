@@ -35,6 +35,10 @@ $(function () {
         
     })
 
+    $(document).on('contextmenu', 'img', function () {
+        return false;
+    })
+
     function showHideAttribute (divElement, show = true) {
         if (divElement !== null) {
             divElement.style.opacity = show ? 1 : 0
