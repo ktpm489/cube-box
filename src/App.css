@@ -278,3 +278,29 @@ object:hover {
   width: 100vw;
   min-height: 100vh;
 }
+#myBackground{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  min-height: 100vh;
+  pointer-events: none;
+}
+
+#backgroundLoading {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.wrapper-none-display {
+  opacity: 0;
+  display: none;
+}
+
+.wrapper-display {
+  opacity: 1;
+  display: block;
+}

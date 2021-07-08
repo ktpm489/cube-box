@@ -4,37 +4,107 @@ import { Component} from 'react'
 import 'prevent-pull-refresh';
 import ReactDOM from "react-dom";
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: false,
+      backgroundGif: "https://ipfs.pantograph.app/ipfs/QmNSG5fFLP1dpfuSFaY8EDWSqSZW6JYAmEEvKrSKQNoR6y?filename=Background_basketball.gif",
+      backgroundVideo: "https://ipfs.pantograph.app/ipfs/QmPYJ525yBEBVQ7ACpY3A9A2HQhYLbQQnDukfFoeMv9vyX?filename=Comp 1.mp4"
+    }
+  }
 
-  componentDidMount() {
-    this.initDataCubeBox()
-    this.updateSize()
-    window.addEventListener('resize', this.updateSize);
+  async componentDidMount() {
+    this.setState({ isLoading: true })
+    try  {
+    let data = await this.getDataInfoConfig()
+      if (data && data.others){
+        // console.log('data.others', typeof data.others.sample1_data ,JSON.parse(data.others.sample1_data))
+        let dataInput = JSON.parse(data.others.sample1_data)
+        this.initDataCubeBox(dataInput)
+        this.updateSize()
+        window.addEventListener('resize', this.updateSize);
+        this.setState({ isLoading: false })
+      } else {
+        this.setState({ isLoading: false })
+      }
+    }catch(e) {
+      console.log('e',e)
+      this.setState({ isLoading: false })
+    }
+   
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize',this.updateSize)
+    this.updateSize && window.removeEventListener('resize',this.updateSize)
   }
 
-  initDataCubeBox = () => {
+
+  getDataInfoConfig = async () => {
+    let response = await fetch('https://dev-api.pantograph.app/setting')
+    let responeJson = await response.json()
+    return responeJson
+  }
+
+  // initDataCubeBox = (data) => {
+  //   const face1 = document.getElementById('face1')
+  //   const face2 = document.getElementById('face2')
+  //   const face3 = document.getElementById('face3')
+  //   const face4 = document.getElementById('face4')
+  //   const face5 = document.getElementById('face5')
+  //   const face6 = document.getElementById('face6')
+  //   if (this.checkSafari()) {
+  //     this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
+  //   } else {
+  //     this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
+  //   }
+
+  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmVG79g2VpcnhXTZ3y8rETr8vmdDXRy1oPUvhtgV6s5xQC?filename=mat-2.png", face2);
+  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmUh1iDrZMhjWPAktquk35TGUekjmK3V6wKgfEEYkkWpXT?filename=mat-3.png", face3, 'https://ipfs.pantograph.app/ipfs/QmYKVjVwUUTe2mWNJMHmpWsxH41cJMDypwdRyuQc7SAwKm?filename=mat-3.gif');
+  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmRTuQq8C4VCZRFUjUsW7VUTLnAEreuronsReteN2MzjGM?filename=mat-4.png", face4);
+  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmZcHnjZtkxnTdGkXPxND3F2gNnjfEddNUDLLkCAhHgfMq?filename=mat-5.png", face5);
+  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmTWkNT56KiCKSz7PJEaQ6YjjtTWZrfbHY12Mr3ARKQdVF?filename=mat-6.png", face6, "https://ipfs.pantograph.app/ipfs/QmbU2b6dpKEwCtVoPeG3jUw87psDzvKsgnkd7eC1sKXo8j?filename=mat-6.gif");
+  // }
+
+  initDataCubeBox = (data) => {
     const face1 = document.getElementById('face1')
     const face2 = document.getElementById('face2')
     const face3 = document.getElementById('face3')
     const face4 = document.getElementById('face4')
     const face5 = document.getElementById('face5')
     const face6 = document.getElementById('face6')
-    if (this.checkSafari()) {
-      this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
+    this.initBackGroundData(data)
+    let frameLink = data.frame
+    this.initEachFrameCube(face1, data.face1, frameLink)
+    this.initEachFrameCube(face2, data.face2, frameLink)
+    this.initEachFrameCube(face3, data.face3, frameLink)
+    this.initEachFrameCube(face4, data.face4, frameLink)
+    this.initEachFrameCube(face5, data.face5, frameLink)
+    this.initEachFrameCube(face6, data.face6, frameLink)
+  }
+
+  initEachFrameCube = (div, data ,frameLink) => {
+    div.style.background = `url(${frameLink}) no-repeat`
+    if (data.linkvideo !== '') {
+      if (this.checkSafari()) {
+        this.addVideoSafari(data.linkvideo, div);
+      } else {
+        this.addVideoChorme(data.linkvideo, div);
+      }
     } else {
-      this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
+      this.addImage(data.linkimage, div, data.linkgif);
     }
 
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmVG79g2VpcnhXTZ3y8rETr8vmdDXRy1oPUvhtgV6s5xQC?filename=mat-2.png", face2);
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmUh1iDrZMhjWPAktquk35TGUekjmK3V6wKgfEEYkkWpXT?filename=mat-3.png", face3, 'https://ipfs.pantograph.app/ipfs/QmYKVjVwUUTe2mWNJMHmpWsxH41cJMDypwdRyuQc7SAwKm?filename=mat-3.gif');
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmRTuQq8C4VCZRFUjUsW7VUTLnAEreuronsReteN2MzjGM?filename=mat-4.png", face4);
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmZcHnjZtkxnTdGkXPxND3F2gNnjfEddNUDLLkCAhHgfMq?filename=mat-5.png", face5);
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmTWkNT56KiCKSz7PJEaQ6YjjtTWZrfbHY12Mr3ARKQdVF?filename=mat-6.png", face6, "https://ipfs.pantograph.app/ipfs/QmbU2b6dpKEwCtVoPeG3jUw87psDzvKsgnkd7eC1sKXo8j?filename=mat-6.gif");
-   
   }
+
+  initBackGroundData = (data) => {
+    this.setState({
+      backgroundGif: data.backgroundGif,
+      backgroundVideo: data.backgroundVideo
+    })
+  }
+  
+
+
 
 
   checkSafari = () => {
@@ -53,24 +123,24 @@ class App extends Component {
      div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image" />`
      div.onmouseenter = function (e) {
        e.preventDefault();
-       console.log('onmouseenter')
+      //  console.log('onmouseenter')
        div.getElementsByTagName('img')[0].src = linkGif
        
      };
      div.ontouchstart = function (e) {
        e.preventDefault();
-       console.log('touchstart')
+      //  console.log('touchstart')
        div.getElementsByTagName('img')[0].src = linkGif
      };
 
      div.onmouseleave = function (e) {
        e.preventDefault();
-       console.log('onmouseleave')
+      //  console.log('onmouseleave')
        div.getElementsByTagName('img')[0].src = linkImg
      };
      div.ontouchend= function (e) {
        e.preventDefault();
-       console.log('ontouchend')
+      //  console.log('ontouchend')
        div.getElementsByTagName('img')[0].src = linkImg
      };
    } else {
@@ -86,7 +156,7 @@ class App extends Component {
 }
 
 // function add Video
- addVideoSafari = ( linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4?autoplay=1', currentDiv) => {
+ addVideoSafari = ( linkVideo = 'https://ipfs.pantograph.app/ipfs/QmWy8vRGgucQLrVcCK5Xdai31PNCJzxr44vUNY5RC8aTAD?filename=red-velvet-psycho-mv-teaser%20(1).mp4', currentDiv) => {
   var div = document.createElement('div');
   div.className = 'cell';
    div.innerHTML =`<video
@@ -159,32 +229,46 @@ class App extends Component {
   }
 }
 
+  renderBackground = () => {
+    const { isLoading, backgroundGif, backgroundVideo} = this.state
+    if (isLoading) {
+      return null
+    } else {
+      if (this.checkSafari()) {
+        return (<img src={backgroundGif} id="myBackground" alt="">
+        </img> )
+      } else {
+        return (<video autoPlay muted loop id="myVideo">
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>)
+      }
+    }
+  }
+
+
+
   render () {
+    const { isLoading } = this.state
   return (
     <div className="App">
-     
       <div className="wrapper">
-      {/***Safari not working in moble*/}
-        {/* <video autoPlay muted loop id="myVideo">
-          <source src="https://ipfs.pantograph.app/ipfs/QmPYJ525yBEBVQ7ACpY3A9A2HQhYLbQQnDukfFoeMv9vyX?filename=Comp 1.mp4" type="video/mp4" />
-        </video> */}
-        {/***Verylagging in chorme in moble*/}
-        {/* <img src="https://ipfs.pantograph.app/ipfs/QmNSG5fFLP1dpfuSFaY8EDWSqSZW6JYAmEEvKrSKQNoR6y?filename=Background_basketball.gif" id="myVideo" alt=""> 
-         </img> */}
-        <p className="learn">
-        </p>
-        <article className="viewport">
-          <section className="cube">
-            <div className="face" id='face1'></div>
-            <div className="face" id='face2'></div>
-            <div className="face" id='face3'></div>
-            <div className="face" id='face4'></div>
-            <div className="face" id='face5'></div>
-            <div className="face" id='face6'></div>``
-          </section>
-        </article>
-
-      </div>
+        {/* {isLoading ? <img src={'https://ipfs.pantograph.app/ipfs/QmT1PHR17tuQhvDHQrJxUwRxp2ikWfAdz8qeoNSAdBP18Q?filename=loading .gif'} id="backgroundLoading" alt="" /> : null} */}
+      <div className={isLoading ? 'wrapper-none-display' : 'wrapper-display' }>
+        {this.renderBackground()}
+            <p className="learn">
+            </p>
+            <article className="viewport">
+              <section className="cube">
+                <div className="face" id='face1'></div>
+                <div className="face" id='face2'></div>
+                <div className="face" id='face3'></div>
+                <div className="face" id='face4'></div>
+                <div className="face" id='face5'></div>
+                <div className="face" id='face6'></div>``
+              </section>
+            </article>
+          </div>
+          </div>
     </div>
   );
   }
