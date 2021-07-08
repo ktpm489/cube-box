@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component} from 'react'
 import 'prevent-pull-refresh';
 import ReactDOM from "react-dom";
+import './js/touch.js'
 class App extends Component {
 
   componentDidMount() {
@@ -53,28 +53,28 @@ class App extends Component {
      div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image" />`
      div.onmouseenter = function (e) {
        e.preventDefault();
-       console.log('onmouseenter')
+      //  console.log('onmouseenter')
        div.getElementsByTagName('img')[0].src = linkGif
        
      };
      div.ontouchstart = function (e) {
        e.preventDefault();
-       console.log('touchstart')
+      //  console.log('touchstart')
        div.getElementsByTagName('img')[0].src = linkGif
      };
 
      div.onmouseleave = function (e) {
        e.preventDefault();
-       console.log('onmouseleave')
+      //  console.log('onmouseleave')
        div.getElementsByTagName('img')[0].src = linkImg
      };
      div.ontouchend= function (e) {
        e.preventDefault();
-       console.log('ontouchend')
+      //  console.log('ontouchend')
        div.getElementsByTagName('img')[0].src = linkImg
      };
    } else {
-     div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image"  onclick="img_box(this)"/>`
+     div.innerHTML = `<img src="${linkImg} "width="100%" height="100%" alt="Test Image" title="Test Image" onclick="img_box(this)" />`
    }
    currentDiv.appendChild(div);
   
@@ -158,11 +158,13 @@ class App extends Component {
     }
   }
 }
+preventDefaultEvent = (e) => {
+  e.preventDefault()
+}
 
   render () {
   return (
-    <div className="App" oncontextmenu="return false;">
-     
+    <div className="App" onContextMenu={this.preventDefaultEvent}>
       <div className="wrapper">
       {/***Safari not working in moble*/}
         {/* <video autoPlay muted loop id="myVideo">

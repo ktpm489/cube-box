@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-undef */
+// eslint-disable-next-line no-undef
+window.$ = window.jQuery = require('jquery')
 $(function () {
-
     $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {
         const face1 = document.getElementById('face1')
         const face2 = document.getElementById('face2')
