@@ -22,17 +22,18 @@ class App extends Component {
     const face4 = document.getElementById('face4')
     const face5 = document.getElementById('face5')
     const face6 = document.getElementById('face6')
-    this.addImage("https://ipfs.pantograph.app/ipfs/Qme8CY739GbguDEnAepgAgigddnaLLW8TH7wcoxc67vgXh?filename=2.png", face1, 'https://ipfs.pantograph.app/ipfs/Qma9cLWvfz87YrhxqRr4CjYSWiRPrLm8x7oCG6EW1p5Us6?filename=mat2.gif');
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmZQ2Tfo42v7aByynm4CGFsR2SK8sK9scHBWYbY4MMV5ea?filename=3.png", face2);
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmYQqGQJfi6XeHAqERBSp1nnXKnVuhiwfyk2wdcmLgHaPV?filename=4.png", face3, 'https://ipfs.pantograph.app/ipfs/QmdJ6yggzxZt1GMuc2pehkYn2xgpsPpksYZ1cfxp11anww?filename=mat4.gif');
-    this.addImage("https://ipfs.pantograph.app/ipfs/QmdG5sAXiqUBzrEnzZCfreeiAkQQewfepCu61BmGzhFHGM?filename=5.png", face4);
-    this.addImage("https://ipfs.pantograph.app/ipfs/Qmd12aesUGsML1uX7TXNC5kap7mBnMtHtdwcEcv72VH7Yu?filename=6.png", face5);
     if (this.checkSafari()) {
-      this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmWSW4NjdRBtL6akshiJhPYBr8tnxw76Q9mSMseFWtSDWz?filename=mat-1.mp4", face6);
+      this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
     } else {
-      this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmWSW4NjdRBtL6akshiJhPYBr8tnxw76Q9mSMseFWtSDWz?filename=mat-1.mp4", face6);
+      this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
     }
-    
+
+    this.addImage("https://ipfs.pantograph.app/ipfs/QmVG79g2VpcnhXTZ3y8rETr8vmdDXRy1oPUvhtgV6s5xQC?filename=mat-2.png", face2);
+    this.addImage("https://ipfs.pantograph.app/ipfs/QmUh1iDrZMhjWPAktquk35TGUekjmK3V6wKgfEEYkkWpXT?filename=mat-3.png", face3, 'https://ipfs.pantograph.app/ipfs/QmYKVjVwUUTe2mWNJMHmpWsxH41cJMDypwdRyuQc7SAwKm?filename=mat-3.gif');
+    this.addImage("https://ipfs.pantograph.app/ipfs/QmRTuQq8C4VCZRFUjUsW7VUTLnAEreuronsReteN2MzjGM?filename=mat-4.png", face4);
+    this.addImage("https://ipfs.pantograph.app/ipfs/QmZcHnjZtkxnTdGkXPxND3F2gNnjfEddNUDLLkCAhHgfMq?filename=mat-5.png", face5);
+    this.addImage("https://ipfs.pantograph.app/ipfs/QmTWkNT56KiCKSz7PJEaQ6YjjtTWZrfbHY12Mr3ARKQdVF?filename=mat-6.png", face6, "https://ipfs.pantograph.app/ipfs/QmbU2b6dpKEwCtVoPeG3jUw87psDzvKsgnkd7eC1sKXo8j?filename=mat-6.gif");
+   
   }
 
 
@@ -176,7 +177,7 @@ class App extends Component {
             <div className="face" id='face3'></div>
             <div className="face" id='face4'></div>
             <div className="face" id='face5'></div>
-            <div className="face" id='face6'></div>
+            <div className="face" id='face6'></div>``
           </section>
         </article>
 
