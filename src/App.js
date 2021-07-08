@@ -123,6 +123,9 @@ class App extends Component {
     iframe.style.alignItems = 'center';
     iframe.style.alignContent = 'center';
     iframe.autoplay = true
+    iframe.controlsList = 'nodownload'
+    iframe.disablePictureInPicture = true
+    iframe.onContextMenu = 'return false;'
     iframe.controls = true
     iframe.muted = true
     iframe.loop = true
