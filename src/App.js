@@ -98,7 +98,7 @@ class App extends Component {
     loop
     preload="auto" width="360" height="360" autoplay
     poster="//vjs.zencdn.net/v/oceans.png"
-    data-setup='{}'>
+   data-setup='{"controlBar": {"pictureInPictureToggle": false, "liveDisplay" : true}}'>
   <source src="${linkVideo}" type="video/mp4"></source>
   <p class="vjs-no-js">
     To view this video please enable JavaScript, and consider upgrading to a
