@@ -214,48 +214,48 @@ object:hover {
 
 
 /* Animation in Deskop Screen*/
-/* @media only screen and (min-width : 1025px) {
+@media only screen and (min-width : 1025px) {
   #face1:hover {
     z-index: 9999;
-    -webkit-transform: rotateX(90deg) translateZ(210px) scale(1.5);
-    -moz-transform: rotateX(90deg) translateZ(210px) scale(1.5);
-    transform: rotateX(90deg) translateZ(210px) scale(1.5);
+    -webkit-transform: rotateX(90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    -moz-transform: rotateX(90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    transform: rotateX(90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
     background-color: transparent;
     filter: drop-shadow(0 0 4px #00ffec);
   }
 
   #face2:hover {
     z-index: 9999;
-    transform: translateZ(210px) scale(1.5);
-    -webkit-transform: translateZ(210px) scale(1.5);
-    -moz-transform: translateZ(210px) scale(1.5);
+    transform: translateZ(210px) scale3d(1.5,1.5,1.5);
+    -webkit-transform: translateZ(210px) scale3d(1.5,1.5,1.5);
+    -moz-transform: translateZ(210px) scale3d(1.5,1.5,1.5);
     background-color: transparent;
     filter: drop-shadow(0 0 4px #00ffec);
   }
 
   #face3:hover {
     z-index: 9999;
-    transform: rotateY(90deg) translateZ(210px) scale(1.5);
-    -webkit-transform: rotateY(90deg) translateZ(210px) scale(1.5);
-    -moz-transform: rotateY(90deg) translateZ(210px) scale(1.5);
+    transform: rotateY(90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    -webkit-transform: rotateY(90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    -moz-transform: rotateY(90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
     background-color: transparent;
     filter: drop-shadow(0 0 4px #00ffec);
   }
 
   #face4:hover {
     z-index: 9999;
-    -webkit-transform: rotateY(180deg) translateZ(210px) scale(1.5);
-    -moz-transform: rotateY(180deg) translateZ(210px) scale(1.5);
-    transform: rotateY(180deg) translateZ(210px) scale(1.5);
+    -webkit-transform: rotateY(180deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    -moz-transform: rotateY(180deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    transform: rotateY(180deg) translateZ(210px) scale3d(1.5,1.5,1.5);
     background-color: transparent;
     filter: drop-shadow(0 0 4px #00ffec);
   }
 
   #face5:hover {
     z-index: 9999;
-    -webkit-transform: rotateY(-90deg) translateZ(210px) scale(1.5);
-    -moz-transform: rotateY(-90deg) translateZ(210px) scale(1.5);
-    transform: rotateY(-90deg) translateZ(210px) scale(1.5);
+    -webkit-transform: rotateY(-90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    -moz-transform: rotateY(-90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    transform: rotateY(-90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
     background-color: transparent;
     filter: drop-shadow(0 0 4px #00ffec);
   }
@@ -263,13 +263,13 @@ object:hover {
 
   #face6:hover {
     z-index: 9999;
-    -webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale(1.5);
-    -moz-transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale(1.5);
-    transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale(1.5);
+    -webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    -moz-transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale3d(1.5,1.5,1.5);
+    transform: rotateX(-90deg) rotate(180deg) translateZ(210px) scale3d(1.5,1.5,1.5);
     background-color: transparent;
     filter: drop-shadow(0 0 4px #00ffec);
   }
-} */
+}
 
 #myVideo {
   position: fixed;
