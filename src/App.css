@@ -214,7 +214,7 @@ object:hover {
 
 
 /* Animation in Deskop Screen*/
-@media only screen and (min-width : 1025px) {
+/* @media only screen and (min-width : 1025px) {
   #face1:hover {
     z-index: 9999;
     -webkit-transform: rotateX(90deg) translateZ(210px) scale3d(1.5,1.5,1.5);
@@ -269,7 +269,7 @@ object:hover {
     background-color: transparent;
     filter: drop-shadow(0 0 4px #00ffec);
   }
-}
+} */
 
 #myVideo {
   position: fixed;
