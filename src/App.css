@@ -278,7 +278,8 @@ object:hover {
   width: 100vw;
   min-height: 100vh;
 }
-#myBackground{
+
+#myBackground {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -303,4 +304,9 @@ object:hover {
 .wrapper-display {
   opacity: 1;
   display: block;
+}
+
+.video-js {
+  width: 360px;
+  height: 360px;
 }
