@@ -304,3 +304,8 @@ object:hover {
   opacity: 1;
   display: block;
 }
+
+.video-js {
+  width: 250px;
+  height: 250px;
+}
