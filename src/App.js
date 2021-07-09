@@ -108,9 +108,9 @@ class App extends Component {
 
 
   checkSafariAndFireFox = () => {
-    return navigator.vendor.match(/apple/i) &&
-      !navigator.userAgent.match(/crios/i) &&
-      navigator.userAgent.match(/fxios/i);
+    return (navigator.vendor.match(/apple/i) || navigator.userAgent.match(/fxios/i))
+       && !navigator.userAgent.match(/crios/i) 
+     
   }
 
 
