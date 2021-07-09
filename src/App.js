@@ -52,7 +52,7 @@ class App extends Component {
   //   const face4 = document.getElementById('face4')
   //   const face5 = document.getElementById('face5')
   //   const face6 = document.getElementById('face6')
-  //   if (this.checkSafari()) {
+  //   if (this.checkSafariAndFireFox()) {
   //     this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
   //   } else {
   //     this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
@@ -85,7 +85,7 @@ class App extends Component {
   initEachFrameCube = (div, data ,frameLink) => {
     div.style.background = `url(${frameLink}) no-repeat`
     if (data.linkvideo !== '') {
-      if (this.checkSafari()) {
+      if (this.checkSafariAndFireFox()) {
         this.addVideoSafari(data.linkvideo, div);
       } else {
         this.addVideoChorme(data.linkvideo, div);
@@ -107,10 +107,10 @@ class App extends Component {
 
 
 
-  checkSafari = () => {
+  checkSafariAndFireFox = () => {
     return navigator.vendor.match(/apple/i) &&
       !navigator.userAgent.match(/crios/i) &&
-      !navigator.userAgent.match(/fxios/i);
+      navigator.userAgent.match(/fxios/i);
   }
 
 
@@ -234,7 +234,7 @@ class App extends Component {
     if (isLoading) {
       return null
     } else {
-      if (this.checkSafari()) {
+      if (this.checkSafariAndFireFox()) {
         return (<img src={backgroundGif} id="myBackground" alt="">
         </img> )
       } else {
