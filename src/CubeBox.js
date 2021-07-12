@@ -12,42 +12,13 @@ class App extends Component {
     }
   }
 
-  async componentDidMount() {
-//     this.setState({ isLoading: true })
-//     try  {
-//     // let data = await this.getDataInfoConfig()
-//     let data = true
-//       if (data){
-//         // console.log('data.others', typeof data.others.sample1_data ,JSON.parse(data.others.sample1_data))
-//         // let dataInput = JSON.parse(data.others.sample1_data)
-//         let dataInput = {
-//           'backgroundGif': "https://ipfs.pantograph.app/ipfs/QmP469etTe5gxtYt2HVNYn22RvVrp9zYnjy6z9fY71Xa26",
-// 'backgroundVideo': "https://ipfs.pantograph.app/ipfs/QmPke6xqSPD1wWFP5paRc2hX9tgfyo1yzynDsEvd7mcZi3",
-// face1: { linkimage: "", linkgif: "", linkvideo: "https://ipfs.pantograph.app/ipfs/QmWSW4NjdRBtL6akshiJhPYBr8tnxw76Q9mSMseFWtSDWz?filename=mat-1.mp4" },
-// face2: { linkimage: "https://ipfs.pantograph.app/ipfs/Qme8CY739GbguDEnAepgAgigddnaLLW8TH7wcoxc67vgXh?filename=2.png", linkgif: "https://ipfs.pantograph.app/ipfs/QmPaHUWKaR9jnr7Wvr4zVUxo3UxPK4VuhEWXqouXp5ZfvM?filename=mat2a.gif", linkvideo: "" },
-// face3: { linkimage: "https://ipfs.pantograph.app/ipfs/QmZQ2Tfo42v7aByynm4CGFsR2SK8sK9scHBWYbY4MMV5ea?filename=3.png", linkgif: "", linkvideo: "" },
-// face4: { linkimage: "https://ipfs.pantograph.app/ipfs/QmYQqGQJfi6XeHAqERBSp1nnXKnVuhiwfyk2wdcmLgHaPV?filename=4.png", linkgif: "https://ipfs.pantograph.app/ipfs/QmRajayojGREpL9Pp8MCmjdBP7N6UUq3jnwnEkq3hPCRkF?filename=mat4a.gif", linkvideo: "" },
-// face5: { linkimage: "https://ipfs.pantograph.app/ipfs/QmdG5sAXiqUBzrEnzZCfreeiAkQQewfepCu61BmGzhFHGM?filename=5.png", linkgif: "", linkvideo: "" },
-// face6: { linkimage: "https://ipfs.pantograph.app/ipfs/Qmd12aesUGsML1uX7TXNC5kap7mBnMtHtdwcEcv72VH7Yu?filename=6.png", linkgif: "", linkvideo: "" },
-// frame: "https://ipfs.pantograph.app/ipfs/QmZwnC4SB2gJ2MhULFDaL4Awkd9FRcSGUbesQ9mgaTWxih?filename=Vien.png",
-// loading: "https://ipfs.pantograph.app/ipfs/QmT1PHR17tuQhvDHQrJxUwRxp2ikWfAdz8qeoNSAdBP18Q?filename=loading .gif"
-//         }
-//         // console.log('dataInput', dataInput)
-//         this.initDataCubeBox(dataInput)
-//         this.updateSize()
-//         window.addEventListener('resize', this.updateSize);
-//         this.setState({ isLoading: false })
-//       } else {
-//         this.setState({ isLoading: false })
-//       }
-//     }catch(e) {
-//       console.log('e',e)
-//       this.setState({ isLoading: false })
-//     }
-    const { isLoading, dataInput } = this.props
-    this.updateSize()
-    window.addEventListener('resize', this.updateSize);
+  componentDidMount() {
+
     try {
+      const { isLoading, dataInput } = this.props
+      this.initDataDefaultCubeBox()
+      this.updateSize()
+      window.addEventListener('resize', this.updateSize);
       if (!isLoading && dataInput !== null && dataInput.frame !== undefined) {
         console.log('dataInput111', dataInput)
         this.initDataCubeBox(dataInput)
@@ -78,25 +49,12 @@ class App extends Component {
     return responeJson
   }
 
-  // initDataCubeBox = (data) => {
-  //   const face1 = document.getElementById('face1')
-  //   const face2 = document.getElementById('face2')
-  //   const face3 = document.getElementById('face3')
-  //   const face4 = document.getElementById('face4')
-  //   const face5 = document.getElementById('face5')
-  //   const face6 = document.getElementById('face6')
-  //   if (this.checkSafari()) {
-  //     this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
-  //   } else {
-  //     this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
-  //   }
-
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmVG79g2VpcnhXTZ3y8rETr8vmdDXRy1oPUvhtgV6s5xQC?filename=mat-2.png", face2);
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmUh1iDrZMhjWPAktquk35TGUekjmK3V6wKgfEEYkkWpXT?filename=mat-3.png", face3, 'https://ipfs.pantograph.app/ipfs/QmYKVjVwUUTe2mWNJMHmpWsxH41cJMDypwdRyuQc7SAwKm?filename=mat-3.gif');
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmRTuQq8C4VCZRFUjUsW7VUTLnAEreuronsReteN2MzjGM?filename=mat-4.png", face4);
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmZcHnjZtkxnTdGkXPxND3F2gNnjfEddNUDLLkCAhHgfMq?filename=mat-5.png", face5);
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmTWkNT56KiCKSz7PJEaQ6YjjtTWZrfbHY12Mr3ARKQdVF?filename=mat-6.png", face6, "https://ipfs.pantograph.app/ipfs/QmbU2b6dpKEwCtVoPeG3jUw87psDzvKsgnkd7eC1sKXo8j?filename=mat-6.gif");
-  // }
+  initDataDefaultCubeBox = () => {
+    const face1 = document.getElementById('face1')
+    if (this.checkSafariAndFireFox()) {
+      this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
+    }
+  }
 
   initDataCubeBox = (data) => {
     const face1 = document.getElementById('face1')
@@ -107,7 +65,7 @@ class App extends Component {
     const face6 = document.getElementById('face6')
     // this.initBackGroundData(data)
     let frameLink = data.frame
-    this.initEachFrameCube(face1, data.face1, frameLink)
+    this.initSpecialFrameCube(face1, data.face1, frameLink)
     this.initEachFrameCube(face2, data.face2, frameLink)
     this.initEachFrameCube(face3, data.face3, frameLink)
     this.initEachFrameCube(face4, data.face4, frameLink)
@@ -115,10 +73,26 @@ class App extends Component {
     this.initEachFrameCube(face6, data.face6, frameLink)
   }
 
+  initSpecialFrameCube = (div, data, frameLink) => {
+    div.style.background = `url(${frameLink}) no-repeat`
+    if (data.linkvideo !== '') {
+      if (this.checkSafariAndFireFox()) {
+        let video = div.getElementsByTagName('video')[0]
+        video.src = data.linkvideo
+      } else {
+        this.addVideoChorme(data.linkvideo, div);
+      }
+    } else {
+      this.addImage(data.linkimage, div, data.linkgif);
+    }
+
+  }
+
+
   initEachFrameCube = (div, data ,frameLink) => {
    
     if (data.linkvideo !== '') {
-      if (this.checkSafari()) {
+      if (this.checkSafariAndFireFox()) {
         this.addVideoSafari(data.linkvideo, div);
       } else {
         this.addVideoChorme(data.linkvideo, div);
@@ -141,11 +115,12 @@ class App extends Component {
 
 
 
-  checkSafari = () => {
-    return navigator.vendor.match(/apple/i) &&
-      !navigator.userAgent.match(/crios/i) &&
-      !navigator.userAgent.match(/fxios/i);
+  checkSafariAndFireFox = () => {
+    return (navigator.vendor.match(/apple/i) || navigator.userAgent.match(/fxios/i))
+      && !navigator.userAgent.match(/crios/i)
+
   }
+
 
 
   // function add Image
@@ -272,7 +247,7 @@ class App extends Component {
         let backgroundGif =  "https://ipfs.pantograph.app/ipfs/QmNSG5fFLP1dpfuSFaY8EDWSqSZW6JYAmEEvKrSKQNoR6y?filename=Background_basketball.gif",
           backgroundVideo ="https://ipfs.pantograph.app/ipfs/QmPYJ525yBEBVQ7ACpY3A9A2HQhYLbQQnDukfFoeMv9vyX?filename=Comp 1.mp4"
         console.log('dataInput', dataInput)
-      if (this.checkSafari()) {
+      if (this.checkSafariAndFireFox()) {
         return (<img src={backgroundGif} id="myBackground" alt="">
         </img> )
       } else {
