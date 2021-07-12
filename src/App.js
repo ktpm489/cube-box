@@ -16,6 +16,7 @@ class App extends Component {
   async componentDidMount() {
     this.setState({ isLoading: true })
     try  {
+      this.initDataDefaultCubeBox()
     let data = await this.getDataInfoConfig()
       if (data && data.others){
         // console.log('data.others', typeof data.others.sample1_data ,JSON.parse(data.others.sample1_data))
@@ -45,25 +46,12 @@ class App extends Component {
     return responeJson
   }
 
-  // initDataCubeBox = (data) => {
-  //   const face1 = document.getElementById('face1')
-  //   const face2 = document.getElementById('face2')
-  //   const face3 = document.getElementById('face3')
-  //   const face4 = document.getElementById('face4')
-  //   const face5 = document.getElementById('face5')
-  //   const face6 = document.getElementById('face6')
-  //   if (this.checkSafariAndFireFox()) {
-  //     this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
-  //   } else {
-  //     this.addVideoChorme("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
-  //   }
-
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmVG79g2VpcnhXTZ3y8rETr8vmdDXRy1oPUvhtgV6s5xQC?filename=mat-2.png", face2);
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmUh1iDrZMhjWPAktquk35TGUekjmK3V6wKgfEEYkkWpXT?filename=mat-3.png", face3, 'https://ipfs.pantograph.app/ipfs/QmYKVjVwUUTe2mWNJMHmpWsxH41cJMDypwdRyuQc7SAwKm?filename=mat-3.gif');
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmRTuQq8C4VCZRFUjUsW7VUTLnAEreuronsReteN2MzjGM?filename=mat-4.png", face4);
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmZcHnjZtkxnTdGkXPxND3F2gNnjfEddNUDLLkCAhHgfMq?filename=mat-5.png", face5);
-  //   this.addImage("https://ipfs.pantograph.app/ipfs/QmTWkNT56KiCKSz7PJEaQ6YjjtTWZrfbHY12Mr3ARKQdVF?filename=mat-6.png", face6, "https://ipfs.pantograph.app/ipfs/QmbU2b6dpKEwCtVoPeG3jUw87psDzvKsgnkd7eC1sKXo8j?filename=mat-6.gif");
-  // }
+  initDataDefaultCubeBox = () => {
+    const face1 = document.getElementById('face1')
+    if (this.checkSafariAndFireFox()) {
+      this.addVideoSafari("https://ipfs.pantograph.app/ipfs/QmRFHxore52SdJ5DdNcxsiJEY1qjV6XAHt3jqmTKVREsgz?filename=mat-1.mp4", face1);
+    }
+  }
 
   initDataCubeBox = (data) => {
     const face1 = document.getElementById('face1')
@@ -74,13 +62,29 @@ class App extends Component {
     const face6 = document.getElementById('face6')
     this.initBackGroundData(data)
     let frameLink = data.frame
-    this.initEachFrameCube(face1, data.face1, frameLink)
+    this.initSpecialFrameCube(face1, data.face1, frameLink)
     this.initEachFrameCube(face2, data.face2, frameLink)
     this.initEachFrameCube(face3, data.face3, frameLink)
     this.initEachFrameCube(face4, data.face4, frameLink)
     this.initEachFrameCube(face5, data.face5, frameLink)
     this.initEachFrameCube(face6, data.face6, frameLink)
   }
+
+  initSpecialFrameCube =   (div, data, frameLink) => {
+    div.style.background = `url(${frameLink}) no-repeat`
+    if (data.linkvideo !== '') {
+      if (this.checkSafariAndFireFox()) {
+        let video = div.getElementsByTagName('video')[0]
+        video.src = data.linkvideo
+      } else {
+        this.addVideoChorme(data.linkvideo, div);
+      }
+    } else {
+      this.addImage(data.linkimage, div, data.linkgif);
+    }
+
+  }
+
 
   initEachFrameCube = (div, data ,frameLink) => {
     div.style.background = `url(${frameLink}) no-repeat`
